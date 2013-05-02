@@ -9,7 +9,15 @@
 #
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
-ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
 ROLES: [admin, user, VIP]
+
+# system type for production environment
+HOST_HEMLOCK_DBTYPE: hemlock
+
+# REST API for Hemlock server (http://lab41.github.io/Hemlock-REST/)
+HOST_HEMLOCK_API: ##FIXME <http://hemlock-rest-server:port>
+
+# ElasticSearch service for Hemlock
+HOST_HEMLOCK_SEARCH: ##FIXME <http://hemlock-elasticsearch-server:port>
+
+DB_LIMIT: 1000

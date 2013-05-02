@@ -1,0 +1,2 @@
+class HemlockModelsController < ApplicationController
+end

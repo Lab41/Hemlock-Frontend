@@ -1,0 +1,30 @@
+<h3>Systems</h3>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <table class="datatable table table-condensed">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Data Type</th>
+            <th>Description</th>
+            <th>POC</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%# :data_type, :description, :endpoint, :hostname, :port, :remote_uri, :poc_name, :poc_email, :remote, :updated_data %>
+        <% unless @hemlock_systems.nil? %>
+          <% @hemlock_systems.each do |system| %>
+            <tr>
+              <td><%= link_to system.name, admin_hemlock_system_path(system.uuid) if system.uuid %></td>
+              <td><%= system.data_type if system.data_type %></td>
+              <td><%= truncate(system.description) if system.description%></td>
+              <td><%= "#{system.poc_name} (#{system.poc_email})"%></td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+      <%= form_tag(search_path, :style => "margin-bottom: 0") do %>
+        <div class="control-group" style="margin-bottom: 0">
+          <div class="controls">
+            <div class="input-prepend input-append">
+              <span class="add-on"><%= button_icon('icon-search') %></span>
+              <input class="input-xxlarge" placeholder="Search..." id="query" name="query" type="text" required="required">
+              <%= button_tag(:type => 'submit', :class => 'btn btn-success', :id => "search-submit") do %>
+                Go! <i class="icon-up-arrow icon-white"></i>
+              <% end %>                   
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row-fluid">
+    <div class="span12">
+    
+      <% if current_user %>      
+        <div class="accordion-trigger-search">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-search">
+            Manage Data Sources <%= button_icon('icon-caret-down') %>
+          </a>
+        </div>
+
+        <div id="collapse-search" class="accordion-body collapse" style="text-align: left">
+          <div class="accordion-inner">
+
+
+              <div class="tabbable"> <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs">
+                  <% if current_user.has_role? :admin %>
+                    <li class="active"><a href="#tab-tenants" data-toggle="tab">Tenants</a></li>
+                    <li><a href="#tab-systems" data-toggle="tab">Systems</a></li>
+                    <li><a href="#tab-users" data-toggle="tab">Users</a></li>
+                  <% end %>
+                </ul>
+
+                <div class="tab-content">
+                  <% if current_user.has_role? :admin %>
+                    <div class="tab-pane active" id="tab-tenants">
+                      <%= render :partial => "admin/hemlock_tenants/index" %>
+                    </div>
+                    <div class="tab-pane" id="tab-systems">
+                      <%= render :partial => "admin/hemlock_systems/index" %>
+                    </div>
+                    <div class="tab-pane" id="tab-users">
+                      <%= render :partial => "admin/hemlock_users/index" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+  
+  <div class="row-fluid">
+    <div class="span12">
+      <div id="search-results"></div>
+    </div>
+  </div>
+</div>

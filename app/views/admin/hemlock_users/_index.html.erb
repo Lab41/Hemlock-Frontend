@@ -1,0 +1,29 @@
+<h3>Users</h3>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <table class="table table-condensed datatable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @hemlock_users.nil? %>
+            <% @hemlock_users.each do |user| %>
+              <tr>
+                <td><%= link_to user.name, admin_hemlock_user_path(user.uuid) if user.uuid %></td>
+                <td><%= user.username if user.username %></td>
+                <td><%= user.email  if user.email %></td>            
+                <td><%= user.created.to_date  if user.created %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

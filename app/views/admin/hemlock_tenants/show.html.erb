@@ -1,0 +1,9 @@
+<h2>Hemlock Tenant</h2>
+<p>ID: <%= @hemlock_tenant.id %></p>
+<p>UUID: <%= @hemlock_tenant.uuid %></p>
+<p>Name: <%= @hemlock_tenant.name %></p>
+<p>Created: <%= @hemlock_tenant.created.to_date %></p>
+
+<%= render :partial => "admin/hemlock_systems/index" %>
+
+<%= render :partial => "admin/hemlock_users/index" %>

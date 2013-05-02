@@ -2,34 +2,43 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rails3 Bootstrap Devise Cancan" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails3 Bootstrap Devise Cancan" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Lab41 Hemlock" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Prelaunch Signup" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application","http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css" %>
+
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
+  <body class="body-<%= ENV['HOST_HEMLOCK_DBTYPE'] %>">
+    <div id="canvas">
+      <header class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/navigation' %>
           </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+        </nav>
+      </header>
+      <div class="disclaimer">
+        <%= disclaimer %>
+      </div>
+      <div id="main" role="main">
+        <div class="container">
+          <div class="content">
+             <div class="row">
+              <div class="span12">
+                <div id="content">
+                  <%= render 'layouts/messages' %>
+                  <%= yield %>              
+                </div>
+              </div>
+            </div>
+            <footer>
+            </footer>
+          </div>
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+    </div> <!--! end of #canvas -->
   </body>
 </html>

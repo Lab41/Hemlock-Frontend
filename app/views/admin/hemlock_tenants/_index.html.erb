@@ -1,0 +1,25 @@
+<h3>Tenants</h3>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <table class="table table-condensed datatable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Created</th>        
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @hemlock_tenants.nil? %>
+            <% @hemlock_tenants.each do |tenant| %>
+              <tr>
+                <td><%= link_to tenant.name, admin_hemlock_tenant_path(tenant.uuid) if tenant.uuid %></td>          
+                <td><%= tenant.created.to_date if tenant.created %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

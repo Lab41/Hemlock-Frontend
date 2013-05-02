@@ -1,3 +1,7 @@
 <h3>User</h3>
-<p>User: <%= @user.name %></p>
+
+<p>
+  User: <%= @user.name %>
+  <%= link_to("Delete user", user_path(@user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless @user == current_user %>
+</p>
 <p>Email: <%= @user.email if @user.email %></p>

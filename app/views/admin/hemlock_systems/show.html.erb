@@ -1,0 +1,8 @@
+<h2>Hemlock System</h2>
+<p>ID: <%= @hemlock_system.id %></p>
+<p>UUID: <%= @hemlock_system.uuid %></p>
+<p>Data Type: <%= @hemlock_system.data_type %></p>
+<p>POC: <%= "#{@hemlock_system.poc_name} (#{@hemlock_system.poc_email})" %></p>
+<p>Description: <%= @hemlock_system.description %></p>
+
+<%= render :partial => "admin/hemlock_tenants/index" %>

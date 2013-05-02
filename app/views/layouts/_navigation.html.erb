@@ -1,26 +1,28 @@
-<%= link_to "Rails3 Bootstrap Devise Cancan", root_path, :class => 'brand' %>
+<% class_users = (controller.controller_name == "users") ? "active hidden-tablet hidden-phone" : "hidden-tablet hidden-phone" %>
+<%= link_to image_tag("logo.png", :class => 'logo'), root_path, :class => 'brand'  %>
 <ul class="nav">
+
   <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-    </li>
+
+
   <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-    </li>
+
   <% end %>
+</ul>
+
+<ul class="nav" style="float:right">
+  <li class="hidden-tablet hidden-phone"><div class="logo-secondary-<%= ENV['HOST_HEMLOCK_DBTYPE'] %>"></div></li>
+  <li>
+  <%= link_to button_icon('icon-globe', 'About'), about_path  %>
+  </li>
   <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
     <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
-      </li>
+      <li><%= link_to button_icon('icon-user', 'Users'), admin_hemlock_users_path, :class => class_users %></li>
     <% end %>
+      <li><%= link_to button_icon('icon-user', 'Edit account'), edit_user_registration_path %></li>
+      <li><%= link_to button_icon('icon-signout','Logout'), destroy_user_session_path, :method=>'delete'  %></li>
   <% else %>
-    <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
+    <li><%= link_to button_icon('icon-bolt', 'Sign up'), new_user_registration_path  %></li>
+    <li><%= link_to button_icon('icon-user', 'Login'), new_user_session_path %></li>
   <% end %>
 </ul>

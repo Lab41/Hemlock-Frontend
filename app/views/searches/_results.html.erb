@@ -1,0 +1,28 @@
+<h3 class="heading">Search Results</h3>
+<p>Results: <%= @search_results[:hits][:total] %></p>
+<table class="table table-condensed search-datatable">
+  <thead>
+    <tr>
+      <th>Result</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% unless @results_text.nil? %>
+      <% iterator = 1 %>
+      <% @results_text.each do |result| %>
+        <% unless result["text"].nil? or result["text"].empty? %>
+          <tr>
+            <td><%= iterator %></td>          
+            <td><%= truncate(result["text"], :length => 255)  %></td>
+          </tr>
+          <% iterator += 1 %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  reloadDataTable();
+</script>
