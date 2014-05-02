@@ -29,5 +29,3 @@ This Rails project serves as the basic UI for [Lab41's Hemlock](http://lab41.git
 
 ### Foundation
 This app was built on top of the RailsApps project [rails3-bootstrap-devise-cancan](https://github.com/RailsApps/rails3-bootstrap-devise-cancan) for Rails 3.2.13 and ruby 1.9.3p194 on top of Ubuntu 13.04
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Lab41/hemlock-frontend/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
